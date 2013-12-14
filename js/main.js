@@ -12,19 +12,29 @@
 
 		comment: function (data) {
 
-			var author = data.author ? '<span class="author"><a href="#"><%= data.author %></a></span>' : ''
-			  , date = data.date ? '<span class="date"><%= data.age %></span>' : ''
-			  , comment = data.comment ? '<span class="comment"><%= data.posttext %></span>' : ''
-			  , template = '<li data-id="<%= data.id %>"><%= author %><%= date %><%= comment %></li>';
+			var author = data.author ? '<span class="author"><a href="#">' + data.author + '</a></span>' : ''
+			  , date = data.date ? '<span class="date">' + data.age + '</span>' : ''
+			  , comment = data.comment ? '<span class="comment">' + data.posttext + '</span>' : ''
+			  , template = '<li data-id="<%= id %>"><%= author %><%= date %><%= comment %></li>';
 
-			return _.template(template, data);
+			return _.template(template, {
+				id: data.id
+			  , author: author
+			  , date: date
+			  , comment: comment
+			});
 
 		},
 
 		topic: function (data) {
 			console.log (data);
 
-			return '<li>' + data.topictitle + '</li>';
+			var title = data.topictitle ? '<span class="title">' + data.topictitle + '</span>' : ''
+			  , template = '<li><%= title %></li>';
+
+			return _.template(template, {
+				title: title
+			});
 		},
 
 		tree: function (html) {
