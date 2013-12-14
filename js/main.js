@@ -27,14 +27,20 @@
 		},
 
 		topic: function (data) {
-			console.log (data);
+			console.log ('data', data);
 
 			var title = data.topictitle ? '<span class="title">' + data.topictitle + '</span>' : ''
-			  , template = '<li><%= title %></li>';
+			  , template = '<li data-id="<%= id %>"><%= title %><%= tree %></li>'
+			  , branches = toTree(data.responses);
+
+			console.log('tree', branches)
 
 			return _.template(template, {
-				title: title
+				id: data.id
+			  , title: title
+			  , tree: branches
 			});
+
 		},
 
 		tree: function (html) {
@@ -72,6 +78,30 @@
 	}
 
 	initialize();
+
+	// helpers
+	
+	function toTree (array) {
+
+		var map = {}
+		  , tree;
+
+		array.forEach(function (datum) {
+
+			datum.children = [];
+			map[datum.id] = datum;
+
+			if (datum.parentid === 0) {
+				tree = datum;
+			} else {
+				map[datum.parentid].children.push(datum);
+			}
+			
+		});
+
+		return tree;
+
+	}
 
 
 })();
