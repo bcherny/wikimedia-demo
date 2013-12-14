@@ -7,17 +7,25 @@
 		url: 'data.json'
 	};
 
+	function process (data) {
 
-	// fetch data
-	$.ajax({
-		url: config.url
-	})
-	.done(function(data) {
-		console.log ('data', data);
-	})
-	.fail(function(err) {
+	}
+
+	function error (err) {
 		console.error(err);
-	});
+	}
+
+
+	function initialize() {
+
+		// fetch data
+		$.ajax(config.url)
+		.done(process)
+		.fail(error);
+
+	}
+
+	initialize();
 
 
 })();
