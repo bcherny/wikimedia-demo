@@ -10,6 +10,17 @@
 
 	var template = {
 
+		comment: function (data) {
+
+			var author = data.author ? '<span class="author"><a href="#"><%= data.author %></a></span>' : ''
+			  , date = data.date ? '<span class="date"><%= data.age %></span>' : ''
+			  , comment = data.comment ? '<span class="comment"><%= data.posttext %></span>' : ''
+			  , template = '<li data-id="<%= data.id %>"><%= author %><%= date %><%= comment %></li>';
+
+			return _.template(template, data);
+
+		},
+
 		topic: function (data) {
 			console.log (data);
 
@@ -24,7 +35,7 @@
 
 	};
 
-	function process (data) {
+	function render (data) {
 
 		var html = template.tree(
 			_.reduce(data.topics, function (accumulator, datum) {
@@ -33,8 +44,6 @@
 		);
 
 		config.element.innerHTML += html;
-
-		console.log (html);
 
 	}
 
@@ -47,7 +56,7 @@
 
 		// fetch data
 		$.ajax(config.url)
-		.done(process)
+		.done(render)
 		.fail(error);
 
 	}
