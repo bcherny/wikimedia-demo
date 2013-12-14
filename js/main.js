@@ -13,7 +13,7 @@
 		topic: function (data) {
 			console.log (data);
 
-			return ''
+			return '<li>' + data.topictitle + '</li>';
 		},
 
 		tree: function (html) {
