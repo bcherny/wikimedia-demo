@@ -109,7 +109,7 @@
 		var map = {}
 		  , tree;
 
-		array.forEach(function (datum) {
+		_.each(array, function (datum) {
 
 			datum.children = [];
 			map[datum.id] = datum;
