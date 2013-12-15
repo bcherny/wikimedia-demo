@@ -12,3 +12,14 @@ body {
   padding: 10px;
   width: 600px;
 }
+.tree li li {
+  margin-left: 20px;
+}
+.author,
+.comment,
+.date {
+  display: block;
+}
+.date {
+  color: #999;
+}
