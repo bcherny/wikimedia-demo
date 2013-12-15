@@ -7,14 +7,18 @@ body
 	background #fff
 	font 13px "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif
 
+.hide
+	display none !important
+
 .tree
 	width 600px
 	
 	li
+		cursor pointer
 		display block
+		padding-left 20px
 
 		li
-			padding-left 20px
 			position relative
 
 			&:first-of-type:before
@@ -49,3 +53,6 @@ body
 	background #eee
 	font-size 1.2em
 	padding 10px
+
+	&:hover
+		background #ddd

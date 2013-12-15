@@ -51,6 +51,8 @@
 
 	function render (data) {
 
+		// append HTML
+
 		var html = template.tree(
 			_.reduce(data.topics, function (accumulator, datum) {
 				return accumulator += template.topic(datum);
@@ -58,6 +60,11 @@
 		);
 
 		config.element.innerHTML += html;
+
+		// toggle comment visibility on click
+		$('li').on('click', function () {
+			$(this).next('li').toggleClass('hide');
+		});
 
 	}
 
