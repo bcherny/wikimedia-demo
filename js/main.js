@@ -12,10 +12,10 @@
 
 		comment: function (data) {
 
-			var author = data.author ? '<span class="author"><a href="#">' + data.author + '</a></span>' : ''
+			var author = data.author ? '<a class="author" href="#">' + data.author + '</a>' : ''
 			  , date = data.age ? '<span class="date">' + pretty(+new Date - data.age) + '</span>' : ''
 			  , comment = data.posttext ? '<span class="comment">' + data.posttext + '</span>' : ''
-			  , template = '<li data-id="<%= id %>"><%= author %><%= comment %><%= date %>';
+			  , template = '<li data-id="<%= id %>"><%= comment %><span class="credit"><%= author %><%= date %></span>';
 
 			return _.template(template, {
 				id: data.id
