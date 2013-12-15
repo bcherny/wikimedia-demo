@@ -15,6 +15,15 @@ body {
 }
 .tree li li {
   padding-left: 20px;
+  position: relative;
+}
+.tree li li:first-of-type:before {
+  color: #eee;
+  content: "↪";
+  font-size: 16px;
+  position: absolute;
+  left: -4px;
+  top: -4px;
 }
 .author,
 .comment,
