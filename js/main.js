@@ -12,8 +12,6 @@
 
 		comment: function (data) {
 
-			console.log ('data', data);
-
 			var author = data.author ? '<span class="author"><a href="#">' + data.author + '</a></span>' : ''
 			  , date = data.age ? '<span class="date">' + pretty(+new Date - data.age) + '</span>' : ''
 			  , comment = data.posttext ? '<span class="comment">' + data.posttext + '</span>' : ''
@@ -29,14 +27,11 @@
 		},
 
 		topic: function (data) {
-			console.log ('data', data);
 
 			var title = data.topictitle ? '<span class="title">' + data.topictitle + '</span>' : ''
 			  , template = '<li data-id="<%= id %>"><%= title %><%= tree %></li>'
 			  , branches = arrayToTree(data.responses)
 			  , branchesHtml = treeToHtml(branches);
-
-			console.log('tree', branches);
 
 			return _.template(template, {
 				id: data.id
