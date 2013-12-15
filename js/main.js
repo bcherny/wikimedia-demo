@@ -12,10 +12,12 @@
 
 		comment: function (data) {
 
+			console.log ('data', data);
+
 			var author = data.author ? '<span class="author"><a href="#">' + data.author + '</a></span>' : ''
-			  , date = data.date ? '<span class="date">' + data.age + '</span>' : ''
-			  , comment = data.comment ? '<span class="comment">' + data.posttext + '</span>' : ''
-			  , template = '<li data-id="<%= id %>"><%= author %><%= date %><%= comment %></li>';
+			  , date = data.age ? '<span class="date">' + data.age + '</span>' : ''
+			  , comment = data.posttext ? '<span class="comment">' + data.posttext + '</span>' : ''
+			  , template = '<li data-id="<%= id %>"><%= author %><%= date %><%= comment %>';
 
 			return _.template(template, {
 				id: data.id
@@ -31,14 +33,15 @@
 
 			var title = data.topictitle ? '<span class="title">' + data.topictitle + '</span>' : ''
 			  , template = '<li data-id="<%= id %>"><%= title %><%= tree %></li>'
-			  , branches = toTree(data.responses);
+			  , branches = arrayToTree(data.responses)
+			  , branchesHtml = treeToHtml(branches);
 
-			console.log('tree', branches)
+			console.log('tree', branches);
 
 			return _.template(template, {
 				id: data.id
 			  , title: title
-			  , tree: branches
+			  , tree: branchesHtml
 			});
 
 		},
@@ -81,7 +84,33 @@
 
 	// helpers
 	
-	function toTree (array) {
+	function treeToHtml (tree) {
+
+		var html = '';
+
+		function _recurse (branch) {
+
+			var children = branch.children;
+
+			html += template.comment(branch);
+
+			if (children.length) {
+				html += '<ul>';
+				_.each (children, _recurse);
+				html += '</ul>';
+			} else {
+				html += '</li>';
+			}
+		}
+		_recurse(tree);
+
+		console.log('html', html);
+
+		return html;
+
+	}
+	
+	function arrayToTree (array) {
 
 		var map = {}
 		  , tree;

@@ -7,3 +7,8 @@ body {
   background: #fff;
   font: 13px "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
 }
+.tree li {
+  display: block;
+  padding: 10px;
+  width: 600px;
+}
