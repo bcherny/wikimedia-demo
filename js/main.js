@@ -15,7 +15,7 @@
 			var author = data.author ? '<span class="author"><a href="#">' + data.author + '</a></span>' : ''
 			  , date = data.age ? '<span class="date">' + pretty(+new Date - data.age) + '</span>' : ''
 			  , comment = data.posttext ? '<span class="comment">' + data.posttext + '</span>' : ''
-			  , template = '<li data-id="<%= id %>"><%= author %><%= date %><%= comment %>';
+			  , template = '<li data-id="<%= id %>"><%= author %><%= comment %><%= date %>';
 
 			return _.template(template, {
 				id: data.id
