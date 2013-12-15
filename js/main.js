@@ -28,8 +28,8 @@
 
 		topic: function (data) {
 
-			var title = data.topictitle ? '<span class="title">' + data.topictitle + '</span>' : ''
-			  , template = '<li data-id="<%= id %>"><%= title %><%= tree %></li>'
+			var title = data.topictitle ? '<li class="title">' + data.topictitle + '</li>' : ''
+			  , template = '<ul class="tree"><%= title %><%= tree %></ul>'
 			  , branches = arrayToTree(data.responses)
 			  , branchesHtml = treeToHtml(branches);
 
@@ -43,7 +43,7 @@
 
 		tree: function (html) {
 
-			return '<ul class="tree">' + html + '</ul>';
+			return html;
 
 		}
 
