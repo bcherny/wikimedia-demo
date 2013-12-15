@@ -3,6 +3,10 @@ wikimedia demo
 
 I spent about 1.5 hours on this demo.
 
+## Demo
+
+http://eighttrackmind.github.io/wikimedia-demo/
+
 ## Features
 
 - Click to toggle topics
